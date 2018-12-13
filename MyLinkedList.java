@@ -1,15 +1,3 @@
-class Node{
-  private int data;
-  private Node next,prev;
-  public Node(int d,Node n, Node p){
-    data=d;
-    next=n;
-    if (p!=null){
-      prev=p;
-    }
-  }
-}
-
 public class MyLinkedList{
   private int size;
   private Node start,end;
