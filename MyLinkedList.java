@@ -5,6 +5,10 @@ public class MyLinkedList{
     start=new Node(null,null,null);
     end=new Node(null,null,null);
   }
+  public boolean add(Integer value){
+    
+  }
+  /*
   public int size(){
     return length;
   }
@@ -17,5 +21,5 @@ public class MyLinkedList{
     String ans="";
     //for (
     return ans;
-  }
+  }*/
 }
