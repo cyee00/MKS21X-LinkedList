@@ -1,13 +1,16 @@
 public class MyLinkedList{
-  private int size;
+  private int length;
   private Node start,end;
-  public MyLinkedList(){}
+  public MyLinkedList(){
+    start=new Node(null,null,null);
+    end=new Node(null,null,null);
+  }
   public int size(){
-    return size;
+    return length;
   }
   public boolean add(int value){
-    size++;
-    Node end=new Node(value,null,end);
+    length++;
+    //Node end=new Node(value,null,end);
     return true;
   }
   public String toString(){
