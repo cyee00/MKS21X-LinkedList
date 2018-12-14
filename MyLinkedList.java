@@ -41,11 +41,15 @@ public class MyLinkedList{
   private Integer get(int index){
     int i=0;
     Node current=start;
-    while (i<index+1){
+    while (i<index){
       current=current.next();
       i++;
     }
-    return current.getData();
+    if (i+1==index){
+      return current.getData();
+    } else {
+      throw new IndexOutOfBoundsException();
+    }
   }
   private Integer set(int index,Integer value){
     int i=0;
@@ -68,5 +72,17 @@ public class MyLinkedList{
       i++;
     }
     return false;
+  }
+  public int indexOf(Integer value){
+    int ans=0;
+    Node current=start;
+    while (i<length){
+      if (current.getData()==value){
+        return ans;
+      }
+      ans++;
+      current=current.next();
+    }
+    return -1;
   }
 }
