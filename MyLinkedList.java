@@ -3,7 +3,7 @@ public class MyLinkedList{
   private Node start,end;
   public MyLinkedList(){
     start=new Node(null,null,null);
-    end=new Node(null,null,null);
+    end=new Node(null,null,start);
     start.setNext(end);
   }
   public boolean add(Integer value){
@@ -11,10 +11,12 @@ public class MyLinkedList{
     Node newNode;
     if (length==0){
       start=new Node(value,end,null);
+    } else if (length==1){
+      end=new Node(value,null,start);
     } else{
-      newNode = new Node(value,end,end.prev());
-      end.prev().setNext(newNode);
-      end.setPrev(newNode);
+      newNode = new Node(value,null,end);
+      end.setNext(newNode);
+      end=newNode;
     }
     return true;
   }
@@ -28,7 +30,7 @@ public class MyLinkedList{
       ans+=current.getData()+", ";
       current=current.next();
     }
-    return ans;
+    return ans+current.getData()+"]";
   }
   /*
   public boolean add(int value){
