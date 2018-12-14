@@ -38,4 +38,6 @@ public class MyLinkedList{
     }
     return ans+"]";//if list is empty, do this
   }
+  private Integer get(int index);
+  private Integer set(int index,Integer value);
 }
