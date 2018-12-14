@@ -40,11 +40,33 @@ public class MyLinkedList{
   }
   private Integer get(int index){
     int i=0;
-    Node ans=start;
+    Node current=start;
     while (i<index+1){
-      ans=ans.next();
+      current=current.next();
       i++;
     }
-    return ans.getData();
+    return current.getData();
+  }
+  private Integer set(int index,Integer value){
+    int i=0;
+    Node current=start;
+    while (i<index+1){
+      current=current.next();
+      i++;
+    }
+    current.setData(value);
+    return current.getData();
+  }
+  public boolean contains(Integer value){
+    int i=0;
+    Node current=start;
+    while (i<length){
+      if (current.getData()==value){
+        return true;
+      }
+      current=current.next();
+      i++;
+    }
+    return false;
   }
 }
