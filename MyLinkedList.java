@@ -8,15 +8,17 @@ public class MyLinkedList{
   }
   public boolean add(Integer value){
     length++;
-    Node newNode;
     if (length==0){
       start=new Node(value,end,null);
+      length++;
     } else if (length==1){
       end=new Node(value,null,start);
+      length++;
     } else{
-      newNode = new Node(value,null,end);
+      Node newNode = new Node(value,null,end);
       end.setNext(newNode);
       end=newNode;
+      length++;
     }
     return true;
   }
@@ -26,11 +28,14 @@ public class MyLinkedList{
   public String toString(){
     String ans="[";
     Node current=start;
-    for (int i=0;i<length;i++){
+    while (current!=null){
       ans+=current.getData()+", ";
       current=current.next();
     }
-    return ans+current.getData()+"]";
+    if (length!=0){
+      return ans.substring(0,length-2)+"]";
+    }
+    return ans+"]";
   }
   /*
   public boolean add(int value){
