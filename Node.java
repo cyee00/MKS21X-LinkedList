@@ -4,9 +4,7 @@ public class Node{
   public Node(Integer d,Node n, Node p){
     data=d;
     next=n;
-    if (p!=null){
-      prev=p;
-    }
+    prev=p;
   }
   public Node next(){
     return next;
@@ -14,11 +12,18 @@ public class Node{
   public Node prev(){
     return prev;
   }
-  private void setNext(Node other){
+  public void setNext(Node other){
     next=other;
   }
-  private void setPrev(Node other){
+  public void setPrev(Node other){
     prev=other;
+  }
+  public Integer getData(){
+    return data;
+  }
+  public Integer setData(Integer i){
+    data=i;
+    return data;
   }
   public String toString(){
     return ""+data;//toString should not show anything except for the data

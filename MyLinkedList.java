@@ -38,6 +38,13 @@ public class MyLinkedList{
     }
     return ans+"]";//if list is empty, do this
   }
-  private Integer get(int index);
-  private Integer set(int index,Integer value);
+  private Integer get(int index){
+    int i=0;
+    Node ans=start;
+    while (i<index+1){
+      ans=ans.next();
+      i++;
+    }
+    return ans.getData();
+  }
 }
