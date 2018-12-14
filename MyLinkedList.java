@@ -15,9 +15,10 @@ public class MyLinkedList{
       end=new Node(value,null,start);
       length++;
     } else{
-      Node newNode = new Node(value,null,end);
-      end.setNext(newNode);
+      Node newNode = new Node(value,null,null);
+      Node prevEnd = new Node(end.getData(),newNode,end.prev());
       end=newNode;
+      end.setPrev(prevEnd);
       length++;
     }
     return true;
@@ -32,20 +33,9 @@ public class MyLinkedList{
       ans+=current.getData()+", ";
       current=current.next();
     }
-    if (length!=0){
+    if (length!=0){//checking if the list isn't empty
       return ans.substring(0,length-2)+"]";
     }
-    return ans+"]";
+    return ans+"]";//if list is empty, do this
   }
-  /*
-  public boolean add(int value){
-    length++;
-    //Node end=new Node(value,null,end);
-    return true;
-  }
-  public String toString(){
-    String ans="";
-    //for (
-    return ans;
-  }*/
 }
