@@ -45,7 +45,7 @@ public class MyLinkedList{
       current=current.next();
       i++;
     }
-    if (i+1==index){
+    if (i+1==index){ //checking to see if the desired index was actually reached
       return current.getData();
     } else {
       throw new IndexOutOfBoundsException();
@@ -54,12 +54,16 @@ public class MyLinkedList{
   private Integer set(int index,Integer value){
     int i=0;
     Node current=start;
-    while (i<index+1){
+    while (i<index){
       current=current.next();
       i++;
     }
-    current.setData(value);
-    return current.getData();
+    if (i+1==index){ //checking to see if the desired index was actually reached
+      current.setData(value);
+      return current.getData();
+    } else {
+      throw new IndexOutOfBoundsException();
+    }
   }
   public boolean contains(Integer value){
     int i=0;
