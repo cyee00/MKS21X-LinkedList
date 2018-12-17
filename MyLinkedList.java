@@ -38,7 +38,7 @@ public class MyLinkedList{
       current=current.next();
     }
     if (length!=0){//checking if the list isn't empty
-      return ans.substring(0,length-2)+"]";
+      return ans.substring(0,ans.length()-2)+"]";
     }
     return ans+"]";//if list is empty, do this
   }
@@ -273,8 +273,11 @@ public class MyLinkedList{
                   System.out.println("6. Testing MyLinkedList add(int value): ");
                   System.out.print("Does l.add(3), l.add(4), l.add(5) print out [3,4,5]?");
                   l.add(3);
+                  System.out.println(l.toString());
                   l.add(4);
+                  System.out.println(l.toString());
                   l.add(5);
+                  System.out.println(l.toString());
                   if(l.toString().equals("[3,4,5]") || l.toString().equals("[3, 4, 5]")){
                           System.out.print(" Yup! ");
                   }
