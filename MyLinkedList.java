@@ -60,10 +60,10 @@ public class MyLinkedList{
   private Integer set(int index,Integer value){
     int i=0;
     Node current=start;
-    Integer ans=get(index);//storing the return value since the node will be replaced
     if (index<0||index>=length){
       throw new IndexOutOfBoundsException();//throwing exception if index out of bounds
     }else{
+      Integer ans=get(index);//storing the return value since the node will be replaced
       while (i<index){//loop through the list until you reach node that will be replaced
         current=current.next();
         i++;
@@ -75,8 +75,8 @@ public class MyLinkedList{
       if (current.next()!=null){//checking to see if there exists a node after it
         current.next().setPrev(newNode);//linking next node to new node
       }
+      return ans;//return replaced value
     }
-    return ans;//return replaced value
   }
 
   public boolean contains(Integer value){
@@ -127,10 +127,10 @@ public class MyLinkedList{
     }
   }
   private Integer remove(int index){
-    Integer ans=get(index);//storing the return value
     if (index<0||index>=length){
       throw new IndexOutOfBoundsException();//stop the function if index out of bounds
     }else{
+      Integer ans=get(index);//storing the return value
       if (length==1){//if there's only one element, it becomes an empty list
         start=new Node(null,null,null);
         end=new Node(null,null,start);
@@ -143,6 +143,12 @@ public class MyLinkedList{
         end=start;
         end.setNext(null);
         end.setPrev(null);
+      }else if(index==0){
+        start=start.next();
+        start.setPrev(null);
+      }else if(index==length-1){
+        end=end.prev();
+        end.setNext(null);
       }else{
         int i=0;
         Node current=start;
@@ -150,10 +156,10 @@ public class MyLinkedList{
           current=current.next();//looping until you reach node to be removed
           i++;
         }
-        
+
       }
+      return ans;
     }
-    return ans;
   }
   //private boolean remove(Integer value){}
 /*
