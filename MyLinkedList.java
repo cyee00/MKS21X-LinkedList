@@ -15,12 +15,12 @@ public class MyLinkedList{
       length++;
     } else if (length==1){//if there is one element, already, change the end
       end=new Node(value,null,start);
+      start.setNext(end);
       length++;
     } else{//otherwise,
-      Node newNode = new Node(value,null,null);//create new node
-      Node prevEnd = new Node(end.getData(),newNode,end.prev());//links the previous end node to the new node that will be at the end
-      end=newNode;//set end to the new end
-      end.setPrev(prevEnd);//links the new end to the previous end
+      Node newNode = new Node(value,null,end);//create new node
+      end.prev().setNext(end);//link the node before end to end
+      end.setNext(newNode);//link the old end to the new end
       length++;
     }
     return true;
@@ -68,12 +68,14 @@ public class MyLinkedList{
         current=current.next();
         i++;
       }
-      Node newNode=new Node(value,current.next(),current.prev());//creating the replacement node and linking it w/prev and next nodes
-      if (current.prev()!=null){//checking to see if there exists a node before it
-        current.prev().setNext(newNode);//linking previous node to new node
+      Node newNode=new Node(value,null,null);//creating the replacement node and linking it w/prev and next nodescurrent.prev().setNext(newNode);//linking previous node to new node
+      if (current.prev()!=null){
+        newNode.setPrev(current.prev());
+        current.prev().setNext(newNode);
       }
-      if (current.next()!=null){//checking to see if there exists a node after it
+      if (current.next()!=null){
         current.next().setPrev(newNode);//linking next node to new node
+        newNode.setNext(current.next());  
       }
       return ans;//return replaced value
     }
