@@ -156,12 +156,21 @@ public class MyLinkedList{
           current=current.next();//looping until you reach node to be removed
           i++;
         }
-
+        //linking the prev and next nodes tg, essentially removing middle node
+        current.prev().setNext(current.next());
+        current.next().setPrev(current.prev());
       }
       return ans;
     }
   }
-  //private boolean remove(Integer value){}
+
+  private boolean remove(Integer value){
+    if (contains(value)){
+      remove(indexOf(value));
+      return true;
+    }
+    return false;
+  }
 /*
     public static void main(String[] args) {
                   //Instantiating stuff:
