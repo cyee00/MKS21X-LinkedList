@@ -84,25 +84,26 @@ public class MyLinkedList{
     Node current=start;
     while (i<length){
       if (current.getData()==value){
-        return true;
+        return true;//return true when the data matches up with desired value
       }
       current=current.next();
       i++;
     }
-    return false;
+    return false;//if the desired value not found, return false
   }
+
   public int indexOf(Integer value){
     int ans=0;
     int i=0;
     Node current=start;
     while (i<length){
       if (current.getData()==value){
-        return ans;
+        return ans;//return the current index if the desired value is found
       }
       ans++;
       current=current.next();
     }
-    return -1;
+    return -1;//return -1 if desired value not found
   }
 
   private void add(int index,Integer value){
@@ -125,7 +126,35 @@ public class MyLinkedList{
       current.setPrev(current);//shifting node unlinked to old prev node and now linked to the new node
     }
   }
-  //private Integer remove(int index){}
+  private Integer remove(int index){
+    Integer ans=get(index);//storing the return value
+    if (index<0||index>=length){
+      throw new IndexOutOfBoundsException();//stop the function if index out of bounds
+    }else{
+      if (length==1){//if there's only one element, it becomes an empty list
+        start=new Node(null,null,null);
+        end=new Node(null,null,start);
+        start.setNext(end);
+      }else if(index==0&&length==2){//checking if first element being removed and there will only be one element left over after removing
+        start=end;
+        start.setNext(null);
+        start.setPrev(null);
+      }else if(index==1&&length==2){//checking if first element being removed and there will only be one element left over after removing
+        end=start;
+        end.setNext(null);
+        end.setPrev(null);
+      }else{
+        int i=0;
+        Node current=start;
+        while (i<index){
+          current=current.next();//looping until you reach node to be removed
+          i++;
+        }
+        
+      }
+    }
+    return ans;
+  }
   //private boolean remove(Integer value){}
 /*
     public static void main(String[] args) {
