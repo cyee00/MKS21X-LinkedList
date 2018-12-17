@@ -69,13 +69,13 @@ public class MyLinkedList{
         i++;
       }
       Node newNode=new Node(value,null,null);//creating the replacement node and linking it w/prev and next nodescurrent.prev().setNext(newNode);//linking previous node to new node
-      if (current.prev()!=null){
+      if (i!=0){
         newNode.setPrev(current.prev());
         current.prev().setNext(newNode);
       }
-      if (current.next()!=null){
+      if (i!=length-1){
         current.next().setPrev(newNode);//linking next node to new node
-        newNode.setNext(current.next());  
+        newNode.setNext(current.next());
       }
       return ans;//return replaced value
     }
@@ -109,23 +109,25 @@ public class MyLinkedList{
   }
 
   private void add(int index,Integer value){
-    Node newNode=new Node(value,null,null);//creating the node to be added
     int i=0;
     Node current=start;
-    if (index<0||index>length){
+    if (index==length){
+      add(value);
+    }else if (index<0||index>length){
       throw new IndexOutOfBoundsException();//essentially stops this function if exception is thrown
     } else{
-      while (i<index-1){//stops at the node right before desired index
+      while (i<=index){//stops at the desired index
         current=current.next();
         i++;
       }
-      //current is the node right before the desired index
       //linking the nodes together
-      current.setNext(newNode);//element right before desired index now points to new node
-      newNode.setPrev(current);//linking new node to prev node
-      current=current.next();//current is now the node that's being shifted
-      newNode.setNext(current);//linking new node to the node it's shifting
-      current.setPrev(current);//shifting node unlinked to old prev node and now linked to the new node
+      Node newNode=new Node(value,null,null);//creating the node to be added
+      if (i!=0){
+        current.prev().setNext(newNode);
+        newNode.setPrev(current.prev());
+      }
+      current.setPrev(newNode);
+      newNode.setNext(current);
     }
   }
   private Integer remove(int index){
