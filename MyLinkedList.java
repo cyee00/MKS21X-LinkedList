@@ -30,6 +30,10 @@ public class MyLinkedList{
     return length;
   }
 
+  public void setSize(int i){
+    length=i;
+  }
+
   public String toString(){
     String ans="[";
     Node current=start;
@@ -175,8 +179,21 @@ public class MyLinkedList{
     }
     return false;
   }
+  //helper functions for extend()
+  private Node getStart(){
+    return start;
+  }
+  private Node getEnd(){
+    return end;
+  }
+  public void extend(MyLinkedList other){
+    end.setNext(other.getStart());//link end of this to start of other
+    other.getEnd().setPrev(end);//link start of other to end of this
+    length+=other.size();
+    other.setSize(0);
+  }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
                   //Instantiating stuff:
                   String[] errorMessages = new String[16];
                   for(int i = 0; i < errorMessages.length; i++) {
@@ -397,7 +414,7 @@ public class MyLinkedList{
                           errorMessages[wrong] = "Your remove(Integer value) isn't working!";
                           wrong++;
                           System.out.print(" No :( ");
-                  }*/
+                  }
                   System.out.print("Your Result is: " + l);
 
 
@@ -452,6 +469,6 @@ public class MyLinkedList{
                           count++;
                           }
                   }
-          }
+          }*/
 
 }
